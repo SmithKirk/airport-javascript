@@ -3,6 +3,11 @@ describe('Feature', function() {
 var airport
 var plane
 
+beforeEach(function(){
+  spyOn(Math, "random").and.returnValue(0.2);
+});
+
+
   it('A plane can take off, land, and be confirmed at the airport', function() {
     plane = new Plane();
     airport = new Airport();
