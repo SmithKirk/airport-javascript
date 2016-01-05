@@ -30,14 +30,23 @@ var plane
 
     beforeEach(function(){
       spyOn(Math, "random").and.returnValue(0.9);
-  });
+    });
 
     it("prevent take off in stormy weather", function(){
-      airport.recievePlane(plane)
       expect(function(){
         airport.takeOff(plane);
       }).toThrowError("Cannot take off: stormy weather")
     });
+
+    it('prevents landing in stormy weather', function() {
+      expect(function(){
+        airport.recievePlane(plane);
+      }).toThrowError("Cannot land: stormy weather")
+    });
+
+
+
+
   });
 
 

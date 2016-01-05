@@ -3,6 +3,9 @@ function Airport() {
 };
 
 Airport.prototype.recievePlane = function(plane) {
+  if (this._isStormy() === true) {
+    throw new Error("Cannot land: stormy weather")
+  };
   this.landedPlanes.push(plane);
 };
 
