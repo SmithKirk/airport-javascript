@@ -9,12 +9,12 @@ var plane
   });
 
   it('can confirm plane is at airport after landing', function() {
-    airport.land(plane);
+    airport.recievePlane(plane);
     expect(airport.landedPlanes).toContain(plane);
   });
 
   it("can confirm plane is not at airport after take off", function(){
-    airport.land(plane);
+    airport.recievePlane(plane);
     airport.takeOff(plane);
     expect(airport.landedPlanes).not.toContain(plane);
   });

@@ -3,7 +3,7 @@ function Plane(){
 };
 
 Plane.prototype.land = function(airport){
-  airport.land(this);
+  airport.recievePlane(this);
   this.isFlying = false;
 };
 

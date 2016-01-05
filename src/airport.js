@@ -2,7 +2,7 @@ function Airport() {
   this.landedPlanes = [];
 };
 
-Airport.prototype.land = function(plane) {
+Airport.prototype.recievePlane = function(plane) {
   this.landedPlanes.push(plane);
 };
 
