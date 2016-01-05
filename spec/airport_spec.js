@@ -15,14 +15,27 @@ var plane
     });
 
     it('can confirm plane is at airport after landing', function() {
-      airport.recievePlane(plane);
+      airport.receivePlane(plane);
       expect(airport.landedPlanes).toContain(plane);
     });
 
     it("can confirm plane is not at airport after take off", function(){
-      airport.recievePlane(plane);
+      airport.receivePlane(plane);
       airport.takeOff(plane);
       expect(airport.landedPlanes).not.toContain(plane);
+    });
+
+    it('has a capacity', function() {
+      expect(airport.maximumCapacity).toEqual(DEFAULT_CAPACITY);
+    });
+
+    it('it raises error if you try to breach maximum capacity', function() {
+      for (count = 0; count < DEFAULT_CAPACITY; count++) {
+        airport.receivePlane(plane);
+      }
+      expect(function() {
+        airport.receivePlane(plane);
+      }).toThrowError('Cannot land: airport full')
     });
   });
 
@@ -39,8 +52,8 @@ var plane
     });
 
     it('prevents landing in stormy weather', function() {
-      expect(function(){
-        airport.recievePlane(plane);
+      expect(function() {
+        airport.receivePlane(plane);
       }).toThrowError("Cannot land: stormy weather")
     });
 

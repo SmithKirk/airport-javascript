@@ -1,11 +1,17 @@
 function Airport() {
   this.landedPlanes = [];
+  this.maximumCapacity = DEFAULT_CAPACITY;
 };
 
-Airport.prototype.recievePlane = function(plane) {
+const DEFAULT_CAPACITY = 10;
+
+Airport.prototype.receivePlane = function(plane) {
   if (this._isStormy() === true) {
     throw new Error("Cannot land: stormy weather")
   };
+  if (this.landedPlanes.length >= this.maximumCapacity) {
+    throw new Error('Cannot land: airport full')
+  }
   this.landedPlanes.push(plane);
 };
 
