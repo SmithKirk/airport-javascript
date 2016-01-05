@@ -25,7 +25,7 @@ var plane
       expect(airport.landedPlanes).not.toContain(plane);
     });
 
-    it('has a capacity', function() {
+    it('has a default capacity', function() {
       expect(airport.maximumCapacity).toEqual(DEFAULT_CAPACITY);
     });
 
@@ -36,6 +36,11 @@ var plane
       expect(function() {
         airport.receivePlane(plane);
       }).toThrowError('Cannot land: airport full')
+    });
+
+    it('allow the default capacity to be overwritten', function() {
+      airport.updateCapacity(20);
+      expect(airport.maximumCapacity).toEqual(20);
     });
   });
 

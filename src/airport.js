@@ -22,6 +22,10 @@ Airport.prototype.takeOff = function(plane){
   this._removePlane(plane)
 };
 
+Airport.prototype.updateCapacity = function(newCapacity) {
+  this.maximumCapacity = newCapacity;
+};
+
 Airport.prototype._removePlane = function(plane){
   var index = this.landedPlanes.indexOf(plane);
   if(index > -1) {
