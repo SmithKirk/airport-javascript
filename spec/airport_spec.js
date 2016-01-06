@@ -2,16 +2,18 @@ describe('Airport', function() {
 
 var airport
 var plane
+var weather
 
   beforeEach(function() {
-    airport = new Airport();
     plane = jasmine.createSpy('plane');
+    weather = jasmine.createSpyObj('weather', ['isStormy']);
+    airport = new Airport(weather);
   });
 
   describe("Not stormy", function(){
 
     beforeEach(function(){
-      spyOn(Math, "random").and.returnValue(0.2);
+      weather.isStormy.and.returnValue(false);
     });
 
     it('can confirm plane is at airport after landing', function() {
@@ -47,7 +49,7 @@ var plane
   describe("Stormy", function(){
 
     beforeEach(function(){
-      spyOn(Math, "random").and.returnValue(0.9);
+      weather.isStormy.and.returnValue(true);
     });
 
     it("prevent take off in stormy weather", function(){
