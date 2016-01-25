@@ -1,8 +1,8 @@
 describe('Airport', function() {
 
-var airport
-var plane
-var weather
+var airport;
+var plane;
+var weather;
 
   beforeEach(function() {
     plane = jasmine.createSpy('plane');
@@ -37,7 +37,7 @@ var weather
       }
       expect(function() {
         airport.receivePlane(plane);
-      }).toThrowError('Cannot land: airport full')
+      }).toThrowError('Cannot land: airport full');
     });
 
     it('allow the default capacity to be overwritten', function() {
@@ -55,13 +55,13 @@ var weather
     it("prevent take off in stormy weather", function(){
       expect(function(){
         airport.takeOff(plane);
-      }).toThrowError("Cannot take off: stormy weather")
+      }).toThrowError("Cannot take off: stormy weather");
     });
 
     it('prevents landing in stormy weather', function() {
       expect(function() {
         airport.receivePlane(plane);
-      }).toThrowError("Cannot land: stormy weather")
+      }).toThrowError("Cannot land: stormy weather");
     });
 
 
